@@ -18,3 +18,18 @@ pass: *Z$h9@0SCh[w
 
 
 https://woostify.com/starter-sites/
+
+CPT : Contact : Liên Hệ 
+Contact-category: Danh Muc Lien He
+
+Form:
+Ten
+SDT
+required above
+Email
+CSS => commom field
+clone button
+
+backup
+[mc4wp_form id="13"]
+[contact_form_footer]

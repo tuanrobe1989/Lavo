@@ -21,6 +21,7 @@ include get_theme_file_path('/inc/block-post-type.php');
 include get_theme_file_path('/inc/product-post-type.php');
 include get_theme_file_path('/inc/blog-post-type.php');
 include get_theme_file_path('/inc/video-post-type.php');
+include get_theme_file_path('/inc/contact-post-type.php');
 
 add_action('wp_head', 'custom_wp_head');
 add_action('admin_head', 'custom_wp_head');
@@ -56,13 +57,20 @@ function add_theme_scripts()
     endif;
     wp_deregister_script('jquery');
     wp_enqueue_script('jquery', get_template_directory_uri() . '/js/jquery-3.6.0.min.js', array(), null, true);
-    wp_enqueue_script('script', get_template_directory_uri() . '/js/scripts.min.js', array('jquery'), 1.1, true);
+    wp_register_script('scripts', get_template_directory_uri() . '/js/scripts.min.js', array('jquery'), 1.1, true);
+    $global_params = array(
+        'ajaxurl' => admin_url('admin-ajax.php'),
+    );
+    wp_localize_script('scripts', 'global_params', $global_params);
+    wp_enqueue_script('scripts');
+
+    //Enqueue Contact Post Type Script : global url ajax and script
+    wp_enqueue_script('contact-post-type', get_template_directory_uri() . '/js/contact-post-type.min.js', array('jquery','scripts'), 1.1, true);
+    wp_localize_script('contact-post-type', 'global_params', $global_params);
+    wp_enqueue_script('contact-post-type');
     if (is_page_template('page-contact.php')) :
         wp_enqueue_style('contact-style', get_template_directory_uri() . '/css/contact.min.css', array(), '1.0', 'all');
         wp_register_script('contact-script', get_template_directory_uri() . '/js/contact.min.js', array('jquery'), 1.1, true);
-        $global_params = array(
-            'ajaxurl' => admin_url('admin-ajax.php')
-        );
         wp_localize_script('contact-script', 'global_params', $global_params);
         wp_enqueue_script('contact-script');
     endif;
@@ -391,6 +399,6 @@ function my_myme_types($mime_types)
 
 function prefix_myfunction()
 { ?>
-    <meta name="theme-color" content="#000000" />
+<meta name="theme-color" content="#000000" />
 <?php }
 add_action('wp_head', 'prefix_myfunction');

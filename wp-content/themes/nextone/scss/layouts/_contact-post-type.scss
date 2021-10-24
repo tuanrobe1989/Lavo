@@ -1,0 +1,47 @@
+.contactForm {
+  &__wrapper {
+    position: relative;
+    max-width: 260px;
+    margin-bottom: 10px;
+  }
+
+  &__input {
+    width: 100%;
+    display: block;
+    height: 40px;
+    padding: 0 16px;
+    box-sizing: border-box;
+    outline: none;
+    border: 2px solid transparent;
+
+    &.required {
+      border: 2px solid red;
+    }
+  }
+
+  &__area-wrapper {
+    max-width: 260px;
+  }
+
+  &__submit {
+    right: 0;
+    top: 1px;
+    width: 100%;
+    height: 38px;
+    background: #474747 url("../images/contact_form_footer_icon.png") no-repeat
+      5px 50%;
+    background-size: auto 22px;
+    color: #fff;
+    border: 2px solid $maincolor;
+    text-transform: uppercase;
+    display: block;
+    cursor: pointer;
+  }
+}
+
+.kpopup__round {
+  .kpopup__common__desc {
+    padding: 20px;
+    text-align: center;
+  }
+}

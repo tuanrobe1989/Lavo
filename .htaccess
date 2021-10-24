@@ -23,29 +23,15 @@
 # BEGIN WordPress
 # Các nội dung nằm giữa "BEGIN WordPress" và "END WordPress" được tạo ra tự động, và chỉ nên được thay đổi thông qua các filter của WordPress. Mọi thay đổi tới thành phần này có thể sẽ bị mất và ghi đè.
 <IfModule mod_rewrite.c>
-	RewriteEngine On
-	RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-	RewriteBase /
-	RewriteRule ^index\.php$ - [L]
-	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteRule . /index.php [L]
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
 </IfModule>
-<ifmodule mod_expires.c="">
-	ExpiresActive On
-	ExpiresByType image/jpg “access 1 year”
-	ExpiresByType image/jpeg “access 1 year”
-	ExpiresByType image/gif “access 1 year”
-	ExpiresByType image/png “access 1 year”
-	ExpiresByType image/svg “access 1 year”
-	ExpiresByType text/css “access 1 month”
-	ExpiresByType application/pdf “access 1 month”
-	ExpiresByType application/javascript “access 1 month”
-	ExpiresByType application/x-javascript “access 1 month”
-	ExpiresByType application/x-shockwave-flash “access 1 month”
-	ExpiresByType image/x-icon “access 1 year”
-	ExpiresDefault “access 2 days”
-</ifmodule>
+
 # END WordPress
 <filesMatch ".(ico|pdf|flv|jpg|jpeg|png|gif|svg|js|css|swf)$">
 	Header set Cache-Control "max-age=84600, public"
