@@ -1,0 +1,285 @@
+@import "../base/mixins";
+$xproscolor: #EB0000;
+.xpros{
+    &__banner{
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: $xproscolor;
+        padding: 80px 0;
+        text-align: center;
+        &__item{
+            @include transition_default(0.3s);
+            display: block;
+            &:hover{
+                opacity: 0.5 !important;
+            }
+        }
+        &__des{
+            font-size: 22px;
+            line-height: 1.5;
+            color: #fff;
+            @media only screen and (max-width: $mbres) {
+                font-size: 20px;
+            }
+            strong{
+                color: #fff;
+            }
+        }
+        &__slides{
+            margin: 50px 0 0 0;
+            list-style-type: none;
+            &--tit{
+                margin: 32px 0 0 0;
+                display: block;
+                text-transform: uppercase;
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: #fff;
+            }
+            &--readmore{
+                display: table;
+                margin: 1rem auto 0 auto;
+                text-align: center;
+                text-transform: uppercase;
+                color: #fff;
+                border: 2px solid #fff;
+                padding: 1rem;
+                text-align: center;
+                min-width: 150px;
+                box-sizing: border-box;
+            }
+        }
+    }
+    &__tranditional,&__fiber{
+        background: #F5F5F5;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        padding: 50px 0;
+        &__tit{
+            text-align: center;
+            font-size: 38px;
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 1.5;
+            color: $xproscolor;
+        }
+        &__des{
+            text-align: center;
+            font-size: 22px;
+            line-height: 1.5;
+        }
+        &__slides{
+            list-style-type: none;
+            position: relative;
+            .owl-nav{
+                position: absolute;
+                left: 0;
+                top: 40%;
+                width: 100%;
+                @include flex;
+                @include justify-content(space-between);
+                button{
+                    outline: none !important;
+                    font-size: 50px !important;
+                    span{
+                        background: #333;
+                        color: #fff;
+                        width: 40px;
+                        height: 40px;
+                        line-height: 34px;
+                        display: block;
+                        border-radius: 5px;
+                    }
+                }
+            }
+        }
+    }
+    &__fiber{
+        &__slides{
+            margin: 50px 0 0 0;
+        }
+        .xpros__product{
+            background: #fff;
+            display: block;
+            padding: 16px;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+        .catelist{
+            margin: 30px 0;
+            li {
+                a{
+                    &:hover{
+                        background: $xproscolor;
+                    }
+                }
+            }
+        }
+    }
+    &__fiberflex{
+        padding: 50px 0;
+        &__flex{
+            &.type02{
+                .xpros__fiberflex__thumb{
+                    order: 1;
+                }
+                .xpros__fiberflex__content{
+                    padding-right: 0;
+                    padding-left: 32px;
+                    order: 2;
+                    @media only screen and (max-width: $mbres) {
+                        padding-left: 0;
+                    }
+                    &--tit{
+                        color: $maincolor;
+                    }
+                }
+                // .xpros__product__button{
+                //     background: $maincolor;
+                //     color: #fff;
+                //     &:hover{
+                //         background: none;
+                //         color: #000;
+                //     }
+                // }
+            }
+        }
+        &__tit{
+            text-align: center;
+            font-size: 38px;
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 1.5;
+            color: $xproscolor;
+        }
+        &__subtit{
+            background: #BFBFBF;
+            text-align: center;
+            text-transform: uppercase;
+            padding: 16px;
+            letter-spacing: 1px;
+        }
+        &__des{
+            text-align: center;
+            font-size: 22px;
+            line-height: 1.5;
+        }
+        &__flex{
+            @include flex;
+            @include flex-wrap;
+            @include align-items('stretch');
+            margin-top: 50px;
+        }
+        &__content{
+            width: 70%;
+            box-sizing: border-box;
+            padding-right: 32px;
+            position: relative;
+            z-index: 2;
+            @include flex;
+            @include flex-wrap;
+            @include flex-direction(column);
+            @include justify-content(space-between);
+            @media only screen and (max-width: $mbres) {
+                width: 100%;
+                padding: 0;
+                order: 2;
+            }
+            &--tit{
+                text-transform: uppercase;
+                position: relative;
+                @media only screen and (max-width: $mbres) {
+                    display: block;
+                    padding: 16px 8px;
+                    margin-top: 20px;
+                    color: #fff;
+                    background: rgba(0, 0, 0, 0.5);
+                    text-align: center;
+                    font-size: 24px;
+                }
+            }
+            &--des{
+                font-size: 22px;
+                line-height: 1.5;
+                text-align: justify;
+                @media only screen and (max-width: $mbres) {
+                    font-size: 16px;;
+                }
+            }
+        }
+        &__thumb{
+            width: 30%;
+            min-height: 580px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #bcbcbc;
+            @media only screen and (min-width: $frommbres) {
+                align-self: stretch;
+                flex: 1;
+            }
+            @media only screen and (max-width: $mbres) {
+                width: 100%;
+                min-height: 320px;
+                order: 1;
+                margin-bottom: -76px;
+            }
+        }
+    }
+    &__product{
+        &__title{
+            text-transform: uppercase;
+            text-align: center;
+        }
+        &__button{
+            display: block;
+            border: 2px solid #000;
+            text-transform: uppercase; 
+            padding: 8px 16px;
+            width: 100%;
+            max-width: 120px;
+            margin: 0 auto;
+            text-align: center;  
+            box-sizing: border-box;
+            font-size: 14px;
+            margin-top: 16px;
+            @include transition_default(0.3s);
+            &:hover{
+                background: $xproscolor;
+                color: #fff;
+            }
+        }
+    }
+    &__info{
+        margin: 0 0 0 0;
+        padding: 50px 0;
+        background-color: #000;
+        background-size: cover;
+        background-position: center;
+        &__title{
+            text-align: center;
+            text-transform: uppercase;
+            color: $xproscolor;
+        }
+        &__round{
+            padding: 32px 32px;
+            border: 1px solid $suboclor;
+            background: #fff;
+            border-radius: 5px;
+            @media only screen and (max-width: $mbres) {
+                padding: 16px;
+            }
+        }
+        p{
+            font-size: 22px;
+            line-height: 1.5;
+            margin: 12px 0;
+            @media only screen and (max-width: $mbres) {
+                font-size: 16px;
+                text-align: justify;
+            }
+        }
+    }
+}

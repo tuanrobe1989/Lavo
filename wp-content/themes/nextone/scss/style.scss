@@ -1,0 +1,16 @@
+@charset "utf-8";
+/*===== BASE =====*/
+@import "base/fonts";
+@import "base/mixins";
+@import "base/base";
+/*===== PARTS =====*/
+@import "layouts/header";
+@import "layouts/aside";
+@import "./layouts/footer";
+// /*===== UTILITIES =====*/
+@import "utilities/animate";
+@import "utilities/hover";
+@import "utilities/fancybox";
+@import "utilities/owl.carousel";
+@import "utilities/owl.theme.default";
+@import "utilities/font-awesome";

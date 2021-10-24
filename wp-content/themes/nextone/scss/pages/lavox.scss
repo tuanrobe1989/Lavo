@@ -1,0 +1,216 @@
+@import "../base/mixins";
+.lavox {
+  &__banner {
+    height: 640px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-color: #000;
+    overflow: hidden;
+    @media only screen and (max-width: $mbres) {
+      height: auto;
+      padding: 50px 0;
+    }
+    &__content {
+      @include flex;
+      @include justify-content(center);
+      @include flex-wrap;
+      @include flex-direction(column);
+      @media only screen and (min-width: $frommbres) {
+        position: absolute;
+        height: 100%;
+        width: 50%;
+        right: 16px;
+        top: 0;
+      }
+      @media only screen and (max-width: $mbres) {
+        width: 100%;
+        background: rgba(0, 0, 0, 0.5);
+      }
+      &--tit {
+        color: $maincolor;
+        text-transform: uppercase;
+        line-height: 1.5;
+        @media only screen and (max-width: $mbres) {
+          font-size: 22px;
+          letter-spacing: 1px;
+          margin-top: 16px;
+          text-align: center;
+        }
+      }
+      &--sub {
+        color: #fff;
+        font-size: 18px;
+        line-height: 2;
+        @media only screen and (max-width: $mbres) {
+          text-align: center;
+        }
+      }
+    }
+  }
+  &__common {
+    padding: 50px 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    display: block;
+    &.type02 {
+      .lavox__common__thumb {
+        order: 1;
+      }
+      .lavox__common__content {
+        padding-right: 0;
+        padding-left: 32px;
+        order: 2;
+        @media only screen and (max-width: $mbres) {
+          padding-left: 0;
+        }
+        &--tit {
+          color: $maincolor;
+        }
+      }
+      .lavox__product__button {
+        background: $maincolor;
+        color: #fff;
+        &:hover {
+          background: none;
+          color: #000;
+        }
+      }
+    }
+    &__flex {
+      @include flex;
+      @include flex-wrap;
+      @include align-items("center");
+    }
+    &__content {
+      width: 70%;
+      box-sizing: border-box;
+      padding-right: 32px;
+      position: relative;
+      z-index: 2;
+      @media only screen and (max-width: $mbres) {
+        width: 100%;
+        padding: 0;
+        order: 2;
+      }
+      &--tit {
+        text-transform: uppercase;
+        position: relative;
+        @media only screen and (max-width: $mbres) {
+          display: block;
+          padding: 16px 8px;
+          margin-top: 20px;
+          color: #fff;
+          background: rgba(0, 0, 0, 0.5);
+          text-align: center;
+          font-size: 24px;
+        }
+      }
+      &--des {
+        font-size: 22px;
+        line-height: 1.5;
+        text-align: justify;
+        @media only screen and (max-width: $mbres) {
+          font-size: 16px;
+        }
+      }
+    }
+    &__thumb {
+      width: 30%;
+      min-height: 640px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #bcbcbc;
+      @media only screen and (min-width: $frommbres) {
+        align-self: stretch;
+        flex: 1;
+      }
+      @media only screen and (max-width: $mbres) {
+        width: 100%;
+        min-height: 320px;
+        order: 1;
+        margin-bottom: -76px;
+      }
+    }
+  }
+  &__slides {
+    list-style-type: none;
+    position: relative;
+    .owl-nav {
+      position: absolute;
+      left: 0;
+      top: 40%;
+      width: 100%;
+      @include flex;
+      @include justify-content(space-between);
+      button {
+        outline: none !important;
+        font-size: 50px !important;
+        span {
+          background: #f4f4f4;
+          width: 40px;
+          height: 40px;
+          line-height: 34px;
+          display: block;
+        }
+      }
+    }
+  }
+  &__product {
+    &__title {
+      text-transform: uppercase;
+      text-align: center;
+    }
+    &__button {
+      display: block;
+      border: 2px solid #000;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      width: 100%;
+      max-width: 120px;
+      margin: 0 auto;
+      text-align: center;
+      box-sizing: border-box;
+      font-size: 14px;
+      margin-top: 16px;
+      @include transition_default(0.3s);
+      &:hover {
+        background: $maincolor;
+        color: #fff;
+      }
+    }
+  }
+  &__info {
+    margin: 0 0 0 0;
+    padding: 50px 0;
+    background-color: #000;
+    background-size: cover;
+    background-position: center;
+    &__title {
+      text-align: center;
+      text-transform: uppercase;
+      color: $maincolor;
+    }
+    &__round {
+      padding: 32px 32px;
+      border: 1px solid $suboclor;
+      background: #fff;
+      border-radius: 5px;
+      @media only screen and (max-width: $mbres) {
+        padding: 16px;
+      }
+    }
+    p {
+      font-size: 22px;
+      line-height: 1.5;
+      margin: 12px 0;
+      @media only screen and (max-width: $mbres) {
+        font-size: 16px;
+        text-align: justify;
+      }
+    }
+  }
+}

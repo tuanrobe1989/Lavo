@@ -1,0 +1,244 @@
+@import "../base/mixins";
+.nowkonn {
+  &__banner {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #eb353c;
+    padding: 80px 0;
+    text-align: center;
+    &__item {
+      @include transition_default(0.3s);
+      display: block;
+      &:hover {
+        opacity: 0.5 !important;
+      }
+    }
+    &__des {
+      p {
+        font-size: 22px;
+        line-height: 1.5;
+        color: #fff;
+        @media only screen and (max-width: $mbres) {
+          font-size: 20px;
+        }
+      }
+
+      strong {
+        color: #fff;
+      }
+    }
+    &__slides {
+      margin: 50px 0 0 0;
+      list-style-type: none;
+      &--tit {
+        margin: 32px 30px 0 30px;
+        padding: 28px 0;
+        display: block;
+        text-transform: uppercase;
+        font-size: 2.3rem;
+        font-weight: 600;
+        color: #fff;
+        background-color: #000;
+        border: 3px solid #eb353c;
+      }
+    }
+  }
+  &__common {
+    padding: 100px 0;
+    @include breakpoint-down(md) {
+      background-position: bottom center;
+    }
+    &.type02 {
+      .nowkonn__common__thumb {
+        order: 1;
+      }
+      .nowkonn__common__content {
+        padding-right: 0;
+        padding-left: 32px;
+        order: 2;
+        @media only screen and (max-width: $mbres) {
+          padding-left: 0;
+        }
+        &--tit {
+        }
+        &--des {
+          @include breakpoint-down(md) {
+            background-color: rgba($color: #000000, $alpha: 0.5);
+          }
+          p,
+          strong {
+            color: $white;
+          }
+        }
+      }
+      .nowkonn__product__button {
+        background: $white;
+
+        &:hover {
+          background: #eb353c;
+          color: #fff;
+        }
+      }
+    }
+    &__flex {
+      @include flex;
+      @include flex-wrap;
+      @include align-items("center");
+    }
+    &__content {
+      width: 70%;
+      box-sizing: border-box;
+      padding-right: 32px;
+      position: relative;
+      z-index: 2;
+      @media only screen and (max-width: $mbres) {
+        width: 100%;
+        padding: 0;
+        order: 2;
+      }
+      &--tit {
+        text-transform: uppercase;
+        position: relative;
+        color: #eb353c;
+        @media only screen and (max-width: $mbres) {
+          display: block;
+          padding: 16px 8px;
+          margin-top: 20px;
+          background: rgba(0, 0, 0, 0.5);
+          text-align: center;
+          font-size: 24px;
+        }
+      }
+      &--des {
+        font-size: 22px;
+        line-height: 1.5;
+        text-align: justify;
+        strong,
+        p {
+          color: #fff;
+        }
+        @include breakpoint-down(md) {
+          background-color: rgba($color: #fff, $alpha: 0.9);
+          border-radius: 5px;
+          margin-left: -8px;
+          margin-right: -8px;
+          padding: 8px;
+          strong,
+          p {
+            color: #000;
+          }
+        }
+        @media only screen and (max-width: $mbres) {
+          font-size: 16px;
+        }
+      }
+    }
+    &__thumb {
+      width: 30%;
+      min-height: 640px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #bcbcbc;
+
+      @media only screen and (min-width: $frommbres) {
+        align-self: stretch;
+        flex: 1;
+      }
+      @media only screen and (max-width: $mbres) {
+        width: 100%;
+        min-height: 320px;
+        order: 1;
+        margin-bottom: -76px;
+      }
+    }
+  }
+  &__slides {
+    list-style-type: none;
+    position: relative;
+    .owl-nav {
+      position: absolute;
+      left: 0;
+      top: 40%;
+      width: 100%;
+      @include flex;
+      @include justify-content(space-between);
+      button {
+        outline: none !important;
+        font-size: 50px !important;
+        span {
+          background: #3d3737;
+          color: #fff;
+          width: 40px;
+          height: 40px;
+          line-height: 34px;
+          display: block;
+        }
+      }
+    }
+  }
+  &__product {
+    display: block;
+    background-color: $white;
+    padding-bottom: 25px;
+    border-radius: 10px;
+    margin-top: 30px;
+    padding: 0.5rem;
+    @include breakpoint-up(md) {
+    }
+    &__title {
+      text-transform: uppercase;
+      text-align: center;
+    }
+    &__button {
+      display: block;
+      border: 2px solid #041036;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      width: 100%;
+      max-width: 120px;
+      margin: 0 auto;
+      text-align: center;
+      box-sizing: border-box;
+      font-size: 14px;
+      margin-top: 16px;
+      @include transition_default(0.3s);
+      &:hover {
+        background: #eb353c;
+        color: #fff;
+      }
+    }
+  }
+  &__info {
+    margin: 0 0 0 0;
+    padding: 50px 0;
+    background-color: #000;
+    background-size: cover;
+    background-position: center;
+    &__title {
+      text-align: center;
+      text-transform: uppercase;
+      color: #eb353c;
+    }
+    &__round {
+      padding: 32px 32px;
+      border: 1px solid $suboclor;
+      background: #fff;
+      border-radius: 5px;
+      @media only screen and (max-width: $mbres) {
+        padding: 16px;
+      }
+    }
+    p {
+      font-size: 22px;
+      line-height: 1.5;
+      color: #000;
+      margin: 12px 0;
+      @media only screen and (max-width: $mbres) {
+        font-size: 16px;
+        text-align: justify;
+      }
+    }
+  }
+}

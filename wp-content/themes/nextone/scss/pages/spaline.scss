@@ -1,0 +1,299 @@
+@import "../base/mixins";
+.spaline {
+  &__banner {
+    background-position: center;
+    background-size: cover;
+    padding-top: 60px;
+    box-sizing: border-box;
+    &__flex {
+      @include flex;
+      @include flex-wrap;
+      @include align-items(center);
+    }
+    .container {
+      position: relative;
+      min-height: 680px;
+      box-sizing: border-box;
+      padding-bottom: 60px;
+    }
+    &__content {
+      z-index: 2;
+    }
+    &__logo {
+      @media only screen and (max-width: $mbres) {
+        margin: 0 auto;
+        display: block;
+      }
+    }
+    &__girl {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+    }
+    &__des {
+      width: 100%;
+      @media only screen and (max-width: $mbres) {
+        background-color: rgba(0, 0, 0, 0.3);
+        padding: 32px 16px;
+        box-sizing: border-box;
+      }
+      p,
+      span,
+      strong,
+      em {
+        max-width: 55%;
+        color: #fff;
+        font-size: 24px;
+        line-height: 1.5;
+        @media only screen and (max-width: $mbres) {
+          max-width: 100%;
+          text-align: justify;
+          font-size: 20px;
+        }
+      }
+    }
+    &__menu {
+      @include flex;
+      @include flex-wrap;
+      margin: 16px -8px 0 -8px;
+      li {
+        padding: 0 8px;
+        list-style: none;
+        box-sizing: border-box;
+        @media only screen and (max-width: $mbres) {
+          width: 100%;
+          margin: 8px 0;
+        }
+        a {
+          display: block;
+          padding: 16px 16px;
+          box-sizing: border-box;
+          min-width: 120px;
+          text-align: center;
+          border-radius: 10px;
+          background: rgba(#4b7000, 0.8);
+          border: 1px solid #fff537;
+          color: #ffffff;
+          text-transform: uppercase;
+          font-weight: 600;
+          letter-spacing: 1px;
+          font-size: 18px;
+          @include transition_default(0.3s);
+          @media only screen and (max-width: $mbres) {
+            width: 100%;
+          }
+          &:hover {
+            background: #2c4005;
+          }
+        }
+      }
+    }
+  }
+
+  &__common {
+    padding: 100px 0;
+    @include breakpoint-down(md) {
+      background-position: bottom center;
+    }
+    &.type02 {
+      .spaline__common__thumb {
+        order: 1;
+        &::after {
+          left: auto;
+          right: 77px;
+        }
+      }
+      .spaline__common__content {
+        padding-right: 0;
+        padding-left: 32px;
+        order: 2;
+        @media only screen and (max-width: $mbres) {
+          padding-left: 0;
+        }
+        &--tit {
+          color: $white;
+        }
+        &--des {
+        }
+      }
+      .spaline__product__button {
+        background: $white;
+
+        &:hover {
+          border: 2px solid #fff537;
+          background: #6f8d33;
+          color: #fff;
+        }
+      }
+    }
+    &__flex {
+      @include flex;
+      @include flex-wrap;
+      @include align-items("center");
+    }
+    &__content {
+      width: 70%;
+      box-sizing: border-box;
+      padding-right: 32px;
+      position: relative;
+      z-index: 2;
+      @media only screen and (max-width: $mbres) {
+        width: 100%;
+        padding: 0;
+        order: 2;
+      }
+      &--tit {
+        text-transform: uppercase;
+        position: relative;
+        color: $white;
+        text-align: center;
+        background-color: #6f8d33;
+        padding: 10px 0;
+        @media only screen and (max-width: $mbres) {
+          display: block;
+          padding: 16px 8px;
+          margin-top: 20px;
+          color: #fff;
+          background: rgba(0, 0, 0, 0.5);
+          text-align: center;
+          font-size: 24px;
+        }
+      }
+      &--des {
+        font-size: 22px;
+        line-height: 1.5;
+        text-align: justify;
+        strong,
+        p {
+          color: #000;
+        }
+        @include breakpoint-down(md) {
+          background-color: rgba($color: #fff, $alpha: 0.9);
+          border-radius: 5px;
+          margin-left: -8px;
+          margin-right: -8px;
+          padding: 8px;
+        }
+        @media only screen and (max-width: $mbres) {
+          font-size: 16px;
+          margin-top: 20px;
+        }
+      }
+    }
+    &__thumb {
+      width: 30%;
+      min-height: 640px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #bcbcbc;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 77px;
+        top: -40px;
+        height: calc(100% + 80px);
+        width: 100%;
+        border: 2px solid #6f8d33;
+        z-index: -1;
+      }
+
+      @media only screen and (min-width: $frommbres) {
+        align-self: stretch;
+        flex: 1;
+      }
+      @media only screen and (max-width: $mbres) {
+        width: 100%;
+        min-height: 320px;
+        order: 1;
+        margin-bottom: -76px;
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+  &__slides {
+    list-style-type: none;
+    position: relative;
+    .owl-nav {
+      position: absolute;
+      left: 0;
+      top: 40%;
+      width: 100%;
+      @include flex;
+      @include justify-content(space-between);
+      button {
+        outline: none !important;
+        font-size: 50px !important;
+        span {
+          background: #f4f4f4;
+          width: 40px;
+          height: 40px;
+          line-height: 34px;
+          display: block;
+        }
+      }
+    }
+  }
+  &__product {
+    &__title {
+      text-transform: uppercase;
+      text-align: center;
+    }
+    &__button {
+      display: block;
+      border: 2px solid #041036;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      width: 100%;
+      max-width: 120px;
+      margin: 0 auto;
+      text-align: center;
+      box-sizing: border-box;
+      font-size: 14px;
+      margin-top: 16px;
+      @include transition_default(0.3s);
+      &:hover {
+        border: 2px solid #fff537;
+        background: #6f8d33;
+        color: #fff;
+      }
+    }
+  }
+  &__info {
+    margin: 0 0 0 0;
+    padding: 50px 0;
+    background-color: #000;
+    background-size: cover;
+    background-position: center;
+    &__title {
+      text-align: center;
+      text-transform: uppercase;
+      color: #6f8d33;
+    }
+    &__round {
+      padding: 32px 32px;
+      border: 1px solid $suboclor;
+      background: #fff;
+      border-radius: 5px;
+      @media only screen and (max-width: $mbres) {
+        padding: 16px;
+      }
+    }
+    strong,
+    p {
+      font-size: 22px;
+      line-height: 1.5;
+      color: #000;
+      margin: 12px 0;
+      @media only screen and (max-width: $mbres) {
+        font-size: 16px;
+        text-align: justify;
+      }
+    }
+  }
+}

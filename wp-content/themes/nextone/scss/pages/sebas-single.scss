@@ -1,0 +1,49 @@
+@import "../base/mixins";
+.product__detail{
+    &__bg{
+        background-color: #5C2E91 !important;
+    }
+    &__title{
+        color: #FDC254;
+        @media only screen and (max-width: 991px) {
+            color: #5C2E91;
+        }
+    }
+    &__des{
+        p, strong, ul, li, div,a{
+            color: #fff;
+        }
+        strong{
+            color: #FDC254;
+        }
+    }
+    &__model{
+        &--bg{
+            border-color: #5C2E91 !important;
+        }
+    }
+    &__modelitem:nth-child(1){
+        background-color: #5C2E91 !important;
+        p, strong, ul, li, div, a{
+            color: #fff;
+        }
+        strong{
+            color: #FDC254;
+        }
+    }
+    &__related{
+        &--tit{
+            color: #fff;
+        }
+        &--des{
+            p,strong{
+                color: #fff !important;
+            }
+        }
+    }
+    &__relateditem{
+        background: #fff;  
+        border-radius: 10px; 
+        padding: 0 12px 24px 12px;    
+    }
+}

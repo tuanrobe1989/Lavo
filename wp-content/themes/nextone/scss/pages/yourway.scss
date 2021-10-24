@@ -1,0 +1,221 @@
+@import "../base/mixins";
+.yourway {
+  strong{
+    color: #fdc254;
+  }
+  &__banner {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 80px 0;
+    text-align: center;
+    &__item {
+      @include transition_default(0.3s);
+      display: block;
+      &:hover {
+        opacity: 0.5 !important;
+      }
+    }
+    &__des {
+      p {
+        font-size: 22px;
+        line-height: 1.5;
+        color: #fff;
+        @media only screen and (max-width: $mbres) {
+          font-size: 20px;
+        }
+      }
+
+      strong {
+        color: #fff;
+      }
+    }
+    &__slides {
+      margin: 50px 0 0 0;
+      list-style-type: none;
+      &--tit {
+        margin: 32px 30px 0 30px;
+        padding: 28px 0;
+        display: block;
+        text-transform: uppercase;
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: #fff;
+        line-height: 1.4;
+        background-color: #000;
+        border: 3px solid #b1b0af;
+      }
+    }
+  }
+
+  &-highlight {
+    &.type02 {
+      .yourway-highlight__title {
+        color: #fff;
+      }
+      .yourway-highlight__desc {
+        p {
+          color: #fff;
+        }
+      }
+    }
+    padding-top: 56px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    @include breakpoint-up(md) {
+      padding-top: 126px;
+    }
+    &__container {
+      strong{
+        color:#fdc254;
+      }
+    }
+
+    &__title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      color: $black;
+      text-shadow: 1px 2px 1px #b1b0af;
+
+      background-image: url("../images/yourway/smallIcon1.png");
+      background-position: bottom center;
+      background-size: 300px auto;
+      background-repeat: no-repeat;
+      padding-bottom: 50px;
+      @include breakpoint-up(md) {
+        font-size: 2.643rem;
+        background-size: 443px auto;
+        padding-bottom: 78px;
+      }
+    }
+
+    &__desc {
+      p {
+        font-size: 22px;
+        line-height: 1.5;
+        color: #000;
+        padding: 0 10%;
+        margin: 30px 0px;
+        text-align: center;
+        @media only screen and (max-width: $mbres) {
+          font-size: 20px;
+        }
+      }
+    }
+
+    &__slider {
+      position: relative;
+      padding-bottom: 50px;
+      .owl-stage-outer {
+        padding: 0 16px;
+      }
+
+      .owl-nav {
+        margin-bottom: 20px;
+        position: absolute;
+        width: 100%;
+        top: 40%;
+        @include flex;
+        @include justify-content(space-between);
+        @include breakpoint-up(md) {
+          position: relative;
+          width: 100%;
+        }
+        button {
+          &.owl-prev {
+            @include breakpoint-up(md) {
+              margin-right: 200px;
+            }
+
+            span {
+              display: block;
+              background-image: url("../images/gentleman/leftArrow.png");
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: contain;
+              color: transparent;
+              height: 44px;
+              width: 44px;
+            }
+          }
+
+          &.owl-next {
+            @include breakpoint-up(md) {
+              margin-left: 200px;
+            }
+            span {
+              display: block;
+              background-image: url("../images/gentleman/rightArrow.png");
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: contain;
+              color: transparent;
+              height: 44px;
+              width: 44px;
+            }
+          }
+        }
+      }
+    }
+
+    &__item {
+      background-color: #fff;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      margin: 35px 0;
+      padding: 0.5rem !important;
+    }
+
+    &__item__img {
+      text-align: center;
+    }
+
+    &__item__name {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: $genColor;
+      text-transform: uppercase;
+
+      @include breakpoint-up(md) {
+        font-size: 1.2rem;
+      }
+    }
+
+    &__item__btn-wrapper {
+      text-align: center;
+      margin-top: 20px;
+      padding: 0 20px 20px 20px;
+
+      @include breakpoint-up(md) {
+        margin-top: 30px;
+      }
+    }
+
+    &__item__btn-more {
+      display: block;
+      text-transform: uppercase;
+      background-color: #b1b0af;
+      color: $white !important;
+      font-weight: 700;
+      line-height: 50px;
+    }
+
+    &__item__btn-purchase {
+      display: block;
+      text-transform: uppercase;
+      background-color: $white;
+      color: $black !important;
+      font-weight: 700;
+      line-height: 50px;
+      border: 3px solid #b1b0af;
+
+      background-image: url("../images/gentleman/cartIcon1.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: right center;
+    }
+  }
+}
