@@ -692,6 +692,10 @@
             line-height: 44px;
           }
         }
+        border: 2px solid transparent;
+        &.required {
+          border: 2px solid red;
+        }
       }
 
       &__submit {

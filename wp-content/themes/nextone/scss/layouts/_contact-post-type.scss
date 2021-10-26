@@ -1,47 +1,132 @@
-.contactForm {
-  &__wrapper {
-    position: relative;
-    max-width: 260px;
-    margin-bottom: 10px;
-  }
-
-  &__input {
-    width: 100%;
-    display: block;
-    height: 40px;
-    padding: 0 16px;
-    box-sizing: border-box;
-    outline: none;
-    border: 2px solid transparent;
-
-    &.required {
-      border: 2px solid red;
+//Footer Form
+.contact_form_footer {
+  .contactForm {
+    &__wrapper {
+      position: relative;
+      max-width: 260px;
+      margin-bottom: 10px;
     }
-  }
 
-  &__area-wrapper {
-    max-width: 260px;
-  }
+    &__input {
+      width: 100%;
+      display: block;
+      height: 40px;
+      padding: 0 16px;
+      box-sizing: border-box;
+      outline: none;
+      border: 2px solid transparent;
 
-  &__submit {
-    right: 0;
-    top: 1px;
-    width: 100%;
-    height: 38px;
-    background: #474747 url("../images/contact_form_footer_icon.png") no-repeat
-      5px 50%;
-    background-size: auto 22px;
-    color: #fff;
-    border: 2px solid $maincolor;
-    text-transform: uppercase;
-    display: block;
-    cursor: pointer;
+      &.required {
+        border: 2px solid red;
+      }
+    }
+
+    &__area-wrapper {
+      max-width: 260px;
+    }
+
+    &__submit {
+      right: 0;
+      top: 1px;
+      width: 100%;
+      height: 38px;
+      background: #474747 url("../images/contact_form_footer_icon.png")
+        no-repeat 5px 50%;
+      background-size: auto 22px;
+      color: #fff;
+      border: 2px solid $maincolor;
+      text-transform: uppercase;
+      display: block;
+      cursor: pointer;
+    }
   }
 }
 
+//Kpopup Common
 .kpopup__round {
   .kpopup__common__desc {
     padding: 20px;
     text-align: center;
+  }
+}
+
+.kpopup-discount {
+  &__container {
+    background-color: $suboclor;
+    text-align: center;
+    border-radius: 20px;
+    margin: 5px;
+  }
+  &__title {
+    display: block;
+    width: 100%;
+    text-transform: uppercase;
+    background: black;
+    color: $white;
+    font-size: 2rem;
+    padding: 14px 0;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+  }
+  &__desc {
+    padding: 10px 50px;
+    p {
+      color: $white;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+    span {
+      color: $maincolor;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+  }
+  &__form-container {
+    @include flex;
+    @include justify-content("center");
+    padding: 20px;
+  }
+  &__form {
+    min-width: 300px;
+    .contactForm {
+      &__wrapper {
+        position: relative;
+        margin-bottom: 10px;
+      }
+
+      &__input {
+        width: 100%;
+        display: block;
+        height: 40px;
+        padding: 0 16px;
+        box-sizing: border-box;
+        outline: none;
+        border: 2px solid $maincolor;
+        border-radius: 10px;
+
+        &.required {
+          border: 2px solid red;
+        }
+      }
+
+      &__area-wrapper {
+      }
+
+      &__submit {
+        display: block;
+        width: 100%;
+        height: 38px;
+        background: #474747 url("../images/contact_form_footer_icon.png")
+          no-repeat 5px 50%;
+        background-size: auto 22px;
+        border: 2px solid $maincolor;
+        border-radius: 10px;
+        text-transform: uppercase;
+        cursor: pointer;
+        color: $maincolor;
+      }
+    }
   }
 }

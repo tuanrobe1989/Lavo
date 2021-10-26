@@ -273,3 +273,10 @@ add_filter('query_vars', function ($vars) {
     $vars[] = "trang";
     return $vars;
 });
+
+//HTML for blog related - blog_related hook in single-blog.php file
+add_action('blog_related', 'blog_related_func');
+function blog_related_func()
+{
+    get_template_part('components/blog-related');
+}

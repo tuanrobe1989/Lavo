@@ -1,9 +1,10 @@
 jQuery(document).ready(function () {
+  //Handle submit forms
   var contactForm = jQuery(".contactForm");
   contactForm.submit(function (event) {
     var formID = jQuery(this).attr("id");
     var currentForm = jQuery("#" + formID);
-    currentForm.find(".contactForm__submit").prop("disabled", true);
+
     var contactForm__name = currentForm.find(".contactForm__name").val();
     var contactForm__phone = currentForm.find(".contactForm__phone").val();
     var contactForm__email = currentForm.find(".contactForm__email").val();
@@ -31,7 +32,6 @@ jQuery(document).ready(function () {
     if (
       contactForm__name &&
       phoneVail(contactForm__phone) &&
-      emailVail(contactForm__email) &&
       nonceValue &&
       formTermID
     ) {
@@ -40,9 +40,10 @@ jQuery(document).ready(function () {
         action: "add_contact",
         name: contactForm__name,
         phone: contactForm__phone,
+        email: contactForm__email,
         formname: formID,
         nonce: nonceValue,
-        termID: formTermID,
+        term_id: formTermID,
       };
       jQuery.ajax({
         type: "post",
@@ -53,13 +54,20 @@ jQuery(document).ready(function () {
           var kpopup = jQuery("#kpopup__common");
           var kpopMsg = kpopup.find(".kpopup__common__desc");
           if (response.type == "success") {
+            console.log(response.msg);
+            //Close all pop-up modal dialogs
+            var allKpopupModals = jQuery(".kpopup");
+            allKpopupModals.each(function () {
+              jQuery(this).removeClass("animate__animated animate__fadeIn");
+            });
+            //Popup - common msg;
             kpopMsg.html(response.msg);
             kpopup.addClass("animate__animated animate__fadeIn");
             //Clear up input fields
             currentForm.find(".contactForm__name").val("");
             currentForm.find(".contactForm__phone").val("");
             currentForm.find(".contactForm__email").val("");
-            currentForm.find(".contactForm__submit").prop("disabled", false);
+            currentForm.find(".contactForm__submit").prop("disabled", true);
           } else {
             kpopMsg.html(response.msg);
             kpopup.addClass("animate__animated animate__fadeIn");
@@ -71,4 +79,10 @@ jQuery(document).ready(function () {
 
     return false;
   });
+
+  //Handle Kpopup for discount form - waiting for 30s to pop up
+  // var kpopupDiscountModal = jQuery("#kpopup-discount");
+  // setTimeout(function () {
+  //   kpopupDiscountModal.addClass("animate__animated animate__fadeIn");
+  // }, 30000);
 });

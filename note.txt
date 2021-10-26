@@ -33,3 +33,16 @@ clone button
 backup
 [mc4wp_form id="13"]
 [contact_form_footer]
+
+Form : Trang den, chu trang, nen den
+Thang => main color 
+button => main color
+
+Ten, sdt , email fields
+
+behaivior
+submit scuess, close pop up
+pop -> sucess
+loop all kpopup => close
+=> enable the target one.
+new term for manage
