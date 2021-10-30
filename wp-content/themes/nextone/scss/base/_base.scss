@@ -501,6 +501,30 @@ h2,
   }
 }
 
+h3,
+.h3 {
+  font-size: 26px;
+  line-height: 1.5;
+  margin: 30px 0;
+
+  @media screen and (max-width: 767px) {
+    font-size: 20px;
+    margin: 24px 0;
+  }
+}
+
+h4,
+.h4 {
+  font-size: 20px;
+  line-height: 1.5;
+  margin: 30px 0;
+
+  @media screen and (max-width: 767px) {
+    font-size: 14px;
+    margin: 24px 0;
+  }
+}
+
 .owl-dot {
   outline: none !important;
 

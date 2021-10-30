@@ -280,3 +280,10 @@ function blog_related_func()
 {
     get_template_part('components/blog-related');
 }
+
+//HTML Output for Suggestion Pop-up product_size
+add_action('product_suggestion', 'product_suggestion_popup_func');
+function product_suggestion_popup_func()
+{
+    get_template_part('components/product-suggestion');
+}

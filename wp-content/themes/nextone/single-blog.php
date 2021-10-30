@@ -34,6 +34,7 @@ $post_id = get_the_id();
         ?>
       </div>
       <?php echo do_action('blog_related'); ?>
+      <?php echo do_action('product_suggestion'); ?>
       <div class="common__sidebar">
         <?php dynamic_sidebar('sidebar-primary'); ?>
       </div>
