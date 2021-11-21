@@ -5,6 +5,14 @@
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
+  position: relative;
+
+  &__background {
+    display: block;
+    img {
+      display: block;
+    }
+  }
 
   &__logo {
     margin-top: 18px;
@@ -35,13 +43,13 @@
   }
 
   &__nav {
-    margin-top: 70px;
+    background-color: rgba(0, 0, 0, 0.802);
 
     @include breakpoint-up(md) {
       @include flex;
       @include align-items(center);
       @include justify-content(center);
-      margin-top: 150px;
+
       border-top: 1px solid $white;
     }
   }

@@ -16,6 +16,20 @@ class WP_Optimizer {
 
 		return array($retain_enabled, $retain_period);
 	}
+
+	/**
+	 * Get data retention options
+	 *
+	 * @return array
+	 */
+	public function get_revisions_retain_info() {
+		$options = WP_Optimize()->get_options();
+
+		$revisions_retention_enabled = $options->get_option('revisions-retention-enabled', 'false');
+		$revisions_retention_count = $revisions_retention_enabled ? $options->get_option('revisions-retention-count', '2') : null;
+
+		return array($revisions_retention_enabled, $revisions_retention_count);
+	}
 	
 	public function get_optimizations_list() {
 	

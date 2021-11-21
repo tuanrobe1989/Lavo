@@ -265,6 +265,84 @@ if ($nowkonn_consumption_title && $nowkonn_consumption_description) :
 endif;
 ?>
 
+<?php
+$nowkonn_bending_and_stretching_title = get_field('nowkonn_bending_and_stretching_title', $term);
+$nowkonn_bending_and_stretching_description = get_field('nowkonn_bending_and_stretching_description', $term);
+$nowkonn_bending_and_stretching_category = get_field('nowkonn_bending_and_stretching_category', $term);
+$nowkonn_bending_and_stretching_thumbnail = get_field('nowkonn_bending_and_stretching_thumbnail', $term);
+
+if ($nowkonn_bending_and_stretching_title && $nowkonn_bending_and_stretching_description) :
+    $args = array(
+        'posts_per_page' => 30,
+        'post_type'      => 'product',
+        'post_status'    => 'publish',
+
+    );
+    if ($product_of_nano) :
+        $args['post__in'] = $product_of_nano;
+    else :
+        $args['tax_query'] =  array(
+            array(
+                'taxonomy' => 'product-category',
+                'field'    => 'slug',
+                'terms'    => $nowkonn_bending_and_stretching_category->slug,
+            )
+        );
+    endif;
+    $postslist = get_posts($args);
+    if ($postslist) : $cate_i++;
+?>
+        <section id="cate_i_<?php echo $cate_i ?>" class="nowkonn__common type02 lazy goteffect" data-bg="<?php echo imageEncode('/images/nowkonn/background2.webp'); ?>">
+            <div class="container nowkonn__common__flex">
+                <div class="nowkonn__common__content">
+                    <h2 class="nowkonn__common__content--tit goteffect"><?php echo $nowkonn_bending_and_stretching_title ?></h2>
+                    <div class="nowkonn__common__content--des goteffect"><?php echo $nowkonn_bending_and_stretching_description ?></div>
+                    <?php
+                    if ($postslist) :
+                    ?>
+                        <ul class="owl-carousel owl-theme nowkonn__slides goteffect">
+                            <?php
+                            foreach ($postslist as $post) : setup_postdata($post);
+                                $product_thumb_id = get_field('image', $post->ID);
+                                $product_thumb = wp_get_attachment_image_src($product_thumb_id, 'full');
+                                $shop_link = get_field('shop_link', $post->ID);
+                                $shop_link_target = '_blank';
+                                if (!$shop_link) :
+                                    $shop_link = 'https://www.facebook.com/messages/t/801328516583595';
+                                    $shop_link_target = '_new';
+                                endif;
+                            ?>
+                                <li>
+                                    <div class="nowkonn__product">
+                                        <a href="<?php the_permalink(); ?>">
+                                            <img src="<?php bloginfo('template_directory') ?>/images/no-image.webp" data-src="<?php echo $product_thumb[0] ?>" width="<?php echo $product_thumb[1] ?>" height="<?php echo $product_thumb[2] ?>" alt="<?php the_title() ?>" title="<?php the_title() ?>" class="nowkonn__product__thumb lazy" />
+                                        </a>
+                                        <a href="<?php the_permalink(); ?>">
+                                            <h3 class="nowkonn__product__title"><?php the_title() ?></h3>
+                                        </a>
+                                        <span class="product__button">
+                                            <a href="<?php echo $shop_link ?>" class="product__button__buy" <?php if ($shop_link_target) echo 'target = "' . $shop_link_target . '"' ?>><?php _e('mua ngay', 'lavo') ?></a>
+                                            <a href="<?php the_permalink(); ?>" class="product__button__detail"><?php _e('chi tiết', 'lavo') ?></a>
+                                        </span>
+                                    </div>
+                                </li>
+                            <?php
+                            endforeach;
+                            wp_reset_postdata();
+                            ?>
+                        </ul>
+                    <?php
+                    endif;
+                    ?>
+                </div>
+                <div class="nowkonn__common__thumb lazy" data-bg="<?php echo $nowkonn_bending_and_stretching_thumbnail; ?>"></div>
+            </div>
+        </section>
+<?php
+    endif;
+endif;
+?>
+
 <section class="nowkonn__info lazy" data-bg="<?php echo imageEncode('/images/nowkonn/background4.webp'); ?>">
     <div class="container">
         <div class="nowkonn__info__round">

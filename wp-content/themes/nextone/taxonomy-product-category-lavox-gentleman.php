@@ -5,9 +5,15 @@ $term_description = term_description($term, "product-category");
 $gentleman_intro_text = get_field('gentleman_intro_text', $term);
 ?>
 
-<section id="gentleman-header" class="gentleman-header goteffect lazy" data-bg="<?php echo imageEncode('/images/gentleman/background.webp'); ?>">
-  <img src="<?php echo imageEncode('/images/gentleman/nomainLogo.png'); ?>" data-src="<?php echo imageEncode('/images/gentleman/mainLogo.png'); ?>" alt="Lavox Gentleman" title="Lavox Gentleman" class="gentleman-header__logo goteffect lazy">
-  <div class="gentleman-header__desc goteffect lazy" data-bg="<?php echo imageEncode('/images/gentleman/mainDesc.png'); ?>"><?php echo $gentleman_intro_text; ?></div>
+
+<section id="gentleman-header" class="gentleman-header goteffect lazy">
+  <picture class="gentleman-header__background">
+    <source media="(min-width:1200px)" srcset="<?php echo imageEncode('/images/gentleman/Genlement3.png'); ?>">
+    <source media="(min-width:992px)" srcset="<?php echo imageEncode('/images/gentleman/Genlement1.png'); ?>">
+    <source media="(min-width:768px)" srcset="<?php echo imageEncode('/images/gentleman/Genlement2.png'); ?>">
+    <img src="<?php echo imageEncode('/images/gentleman/Genlement2.png'); ?>" alt="Gentleman">
+  </picture>
+
   <ul class="gentleman-header__nav goteffect">
     <li class="gentleman-header__item">
       <a href="#gentleman-brand" class="gentleman-header__item__link"><?php _e('GIỚI THIỆU', 'lavo') ?></a>

@@ -200,8 +200,8 @@ $args = [
     'orderby'       => 'date',
     'order'         => 'DESC',
 ];
-$blogs = get_posts($args);
-if ($blogs) :
+$videos = get_posts($args);
+if ($videos) :
 ?>
     <section class="home__video goteffect">
         <div class="container">
@@ -232,8 +232,7 @@ if ($blogs) :
 
             <div class="home__video__list goteffect">
                 <?php
-                foreach ($blogs as $post) : setup_postdata($post);
-                    $video = get_field('url', $post->ID);
+                foreach ($videos as $post) : setup_postdata($post);
                     $video_thumb = get_field('video_thumb', $post->ID);
                     $new_cate = get_the_terms($post->ID, 'video-category');
                 ?>

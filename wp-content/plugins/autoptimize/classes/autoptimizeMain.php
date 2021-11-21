@@ -189,6 +189,7 @@ class autoptimizeMain
                 
                 // Add "no cache found" notice.
                 add_action( 'admin_notices', 'autoptimizeMain::notice_nopagecache', 99 );
+                add_action( 'admin_notices', 'autoptimizeMain::notice_potential_conflict', 99 );
             }
         } else {
             add_action( 'admin_notices', 'autoptimizeMain::notice_cache_unavailable' );
@@ -642,6 +643,12 @@ class autoptimizeMain
             array_map( 'unlink', glob( $ao_ccss_dir . '*.{css,html,json,log,zip,lock}', GLOB_BRACE ) );
             rmdir( $ao_ccss_dir );
         }
+
+        // Remove 404-handler (although that should have been removed in clearall already).
+        $_fallback_php = trailingslashit( WP_CONTENT_DIR ) . 'autoptimize_404_handler.php';
+        if ( file_exists( $_fallback_php ) ) {
+            unlink( $_fallback_php );
+        }
     }
 
     public static function on_deactivation()
@@ -716,7 +723,7 @@ class autoptimizeMain
          * 
          * uses helper function in autoptimizeUtils.php
          */
-        $_ao_nopagecache_notice      = __( 'It looks like your site might not have <strong>page caching</strong> which is a <strong>must-have for performance</strong>, check with your host if they offer this or install a page caching plugin like for example', 'autoptimize' );
+        $_ao_nopagecache_notice      = __( 'It looks like your site might not have <strong>page caching</strong> which is a <strong>must-have for performance</strong>. If you are sure you have a page cache, you can close this notice, but when in doubt check with your host if they offer this or install a page caching plugin like for example', 'autoptimize' );
         $_ao_pagecache_install_url   = network_admin_url() . 'plugin-install.php?tab=search&type=term&s=';
         $_ao_nopagecache_notice     .= ' <a href="' . $_ao_pagecache_install_url . 'wp+super+cache' . '">WP Super Cache</a>, <a href="' . $_ao_pagecache_install_url . 'keycdn+cache+enabler' . '">KeyCDN Cache Enabler</a>, ...';
         $_ao_nopagecache_dismissible = 'ao-nopagecache-forever'; // the notice is only shown once and will not re-appear when dismissed.
@@ -727,6 +734,27 @@ class autoptimizeMain
             if ( false === autoptimizeUtils::find_pagecache() ) {
                 echo '<div class="notice notice-info is-dismissible" data-dismissible="' . $_ao_nopagecache_dismissible . '"><p>';
                 echo $_ao_nopagecache_notice;
+                echo '</p></div>';
+            }
+        }
+    }
+
+    public static function notice_potential_conflict()
+    {
+        /*
+         * Using other plugins to do CSS/ JS optimization can cause unexpected and hard to troubleshoot issues, warn users who seem to be in that situation.
+         */
+        // Translators: the sentence will be finished with the name of the offending plugin and a final stop.
+        $_ao_potential_conflict_notice      = __( 'It looks like you have <strong>another plugin also doing CSS and/ or JS optimization</strong>, which can result in hard to troubleshoot <strong>conflicts</strong>. For this reason it is recommended to disable this functionality in', 'autoptimize' ) . ' ';
+        $_ao_potential_conflict_dismissible = 'ao-potential-conflict-forever'; // the notice is only shown once and will not re-appear when dismissed.
+        $_is_ao_settings_page               = autoptimizeUtils::is_ao_settings();
+
+        if ( current_user_can( 'manage_options' ) && $_is_ao_settings_page && PAnD::is_admin_notice_active( $_ao_potential_conflict_dismissible ) && true === apply_filters( 'autopitmize_filter_main_show_potential_conclict_notice', true ) ) {
+            $_potential_conflicts = autoptimizeUtils::find_potential_conflicts();
+            if ( false !== $_potential_conflicts ) {
+                $_ao_potential_conflict_notice .= '<strong>' . $_potential_conflicts . '</strong>.';
+                echo '<div class="notice notice-info is-dismissible" data-dismissible="' . $_ao_potential_conflict_dismissible . '"><p>';
+                echo $_ao_potential_conflict_notice;
                 echo '</p></div>';
             }
         }

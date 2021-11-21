@@ -3,7 +3,8 @@
 Plugin Name: WP-Optimize - Clean, Compress, Cache
 Plugin URI: https://getwpo.com
 Description: WP-Optimize makes your site fast and efficient. It cleans the database, compresses images and caches pages. Fast sites attract more traffic and users.
-Version: 3.1.8
+Version: 3.1.12
+Update URI: https://wordpress.org/plugins/wp-optimize/
 Author: David Anderson, Ruhani Rabin, Team Updraft
 Author URI: https://updraftplus.com
 Text Domain: wp-optimize
@@ -15,11 +16,12 @@ if (!defined('ABSPATH')) die('No direct access allowed');
 
 // Check to make sure if WP_Optimize is already call and returns.
 if (!class_exists('WP_Optimize')) :
-define('WPO_VERSION', '3.1.8');
+define('WPO_VERSION', '3.1.12');
 define('WPO_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('WPO_PLUGIN_MAIN_PATH', plugin_dir_path(__FILE__));
 define('WPO_PREMIUM_NOTIFICATION', false);
 define('WPO_MINIFY_PHP_VERSION_MET', version_compare(PHP_VERSION, '5.4', '>=') ? true : false);
+if (!defined('WPO_WEBP_IMAGES_PATH')) define('WPO_WEBP_IMAGES_PATH', '/wpo/webp/');
 
 class WP_Optimize {
 
@@ -129,7 +131,7 @@ class WP_Optimize {
 					$should_purge_cache = true;
 				}
 			// A theme is updated using the classic update system
-			} elseif ('update' === $options['action']) {
+			} elseif ('update' === $options['action'] && is_array($options['themes'])) {
 				// Check if the theme is in use
 				if (in_array($active_theme, $options['themes']) || in_array($parent_theme, $options['themes'])) {
 					$should_purge_cache = true;
@@ -469,6 +471,11 @@ class WP_Optimize {
 		// Include minify
 		$this->get_minify();
 		$this->run_updates();
+
+		if (defined('WPO_USE_WEBP_CONVERSION') && true === WPO_USE_WEBP_CONVERSION) {
+			// Include webP
+			include_once WPO_PLUGIN_MAIN_PATH . 'webp/class-wp-optimize-webp.php';
+		}
 	}
 
 	/**
@@ -1193,6 +1200,9 @@ class WP_Optimize {
 			'current_cache_size' => __('Current cache size:', 'wp-optimize'),
 			'number_of_files' => __('Number of files:', 'wp-optimize'),
 			'toggle_info' => __('Show information', 'wp-optimize'),
+			'added_to_list' => __('Added to the list', 'wp-optimize'),
+			'added_notice' => __('The file was added to the list', 'wp-optimize'),
+			'save_notice' => __('Save the changes', 'wp-optimize'),
 			'page_refresh' => __('Refreshing the page to reflect changes...', 'wp-optimize'),
 			'settings_have_been_deleted_successfully' => __('WP-Optimize settings have been deleted successfully.', 'wp-optimize'),
 			'loading_data' => __('Loading data...', 'wp-optimize'),
@@ -1200,6 +1210,7 @@ class WP_Optimize {
 			'settings_page_url' => admin_url('admin.php?page=wpo_settings'),
 			'sites' => $this->get_sites(),
 			'user_always_ignores_table_delete_warning' => (get_user_meta(get_current_user_id(), 'wpo-ignores-table-delete-warning', true)) ? true : false,
+			'post_meta_tweak_completed' => __('The tweak has been performed.', 'wp-optimize'),
 		));
 	}
 
@@ -2316,7 +2327,8 @@ class WP_Optimize {
 	 * Prevents bots from indexing plugins list
 	 */
 	public function robots_txt($output) {
-		$output .= "Disallow: /uploads/wpo-plugins-tables-list.json";
+		$upload_dir = wp_upload_dir();
+		$output .= "\nDisallow: " . str_replace(site_url(), '', $upload_dir['baseurl']) . "/wpo-plugins-tables-list.json\n";
 		return $output;
 	}
 }

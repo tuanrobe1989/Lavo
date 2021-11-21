@@ -252,17 +252,15 @@ $banner_intro_text = get_field('banner_intro_text');
             class="lazy">
         </div>
       </div>
-      <form method="POST" class="odm-register__register-form contactForm" id="odm_contact" name="odm_contact">
+      <form action="" method="POST" class="odm-register__register-form">
         <h2 class="odm-register__register-form__title">ĐĂNG KÝ</h2>
         <div class="odm-register__register-form__register-wrapper"><input type="text"
-            class="odm-register__register-form__register-input contactForm__name" placeholder="Họ và Tên:">
+            class="odm-register__register-form__register-input" placeholder="Email:">
         </div>
         <div class="odm-register__register-form__register-wrapper"><input type="text"
-            class="odm-register__register-form__register-input contactForm__phone" placeholder="Số điện thoại:">
+            class="odm-register__register-form__register-input" placeholder="Password:">
         </div>
-        <input type="submit" value="ĐĂNG KÝ" class="odm-register__register-form__submit contactForm__submit">
-        <input type="hidden" name="nonce" class="nonce" value="<?php echo wp_create_nonce('add_contact_nonce') ?>" />
-        <input type="hidden" class="contactForm__term" value="1077" />
+        <input type="submit" value="ĐĂNG KÝ" class="odm-register__register-form__submit">
       </form>
     </div>
   </div>

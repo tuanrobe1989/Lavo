@@ -152,6 +152,27 @@ jQuery(document).ready(function () {
     });
   }
 
+  if (jQuery("#cate_i_4").length > 0) {
+    new Waypoint({
+      element: document.getElementById("cate_i_4"),
+      handler: function (direction) {
+        jQuery("#cate_i_4").addClass(
+          "eff_actived animate__animated animate__fadeIn"
+        );
+        jQuery("#cate_i_4 .nowkonn__common__content--tit").addClass(
+          "eff_actived animate__animated animate__fadeIn"
+        );
+        jQuery("#cate_i_4 .nowkonn__common__content--des").addClass(
+          "eff_actived animate__animated animate__fadeIn"
+        );
+        jQuery("#cate_i_4 .nowkonn__slides").addClass(
+          "eff_actived animate__animated animate__fadeIn"
+        );
+      },
+      offset: "70%",
+    });
+  }
+
   if (jQuery(".nowkonn__info").length > 0) {
     new Waypoint({
       element: document.getElementsByClassName("nowkonn__info"),

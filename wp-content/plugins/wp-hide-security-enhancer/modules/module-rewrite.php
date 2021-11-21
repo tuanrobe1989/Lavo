@@ -42,6 +42,9 @@
                     include(WPH_PATH . "/modules/components/rewrite-json-rest.php");
                     $this->components[]  =   new WPH_module_rewrite_json_rest();
                     
+                    include(WPH_PATH . "/modules/components/general-feed.php");
+                    $this->components[]  =   new WPH_module_general_feed();
+                    
                     include(WPH_PATH . "/modules/components/rewrite-root-files.php");
                     $this->components[]  =   new WPH_module_rewrite_root_files();
                     

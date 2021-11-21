@@ -98,7 +98,8 @@
                                             'remove_other_generator_meta'   =>  'yes',
                                             'remove_wlwmanifest'            =>  'yes',
                                             'remove_header_link'            =>  'yes',
-                                            'remove_html_comments'          =>  'yes'
+                                            'remove_html_comments'          =>  'yes',
+                                            'clean_json_base_route'         =>  'yes'
                                             );
                     $this->wph->settings['module_settings']   =   $_settings;
                                                             

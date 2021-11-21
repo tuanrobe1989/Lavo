@@ -4,7 +4,7 @@ Donate link: https://www.nsp-code.com/
 Tags: wordpress hide, hide, security, improve security, hacking, wp hide, custom login, wp-loging.php, wp-admin, admin hide, login change, 
 Requires at least: 2.8
 Tested up to: 5.8
-Stable tag: 1.6.3.7
+Stable tag: 1.6.3.9
 License: GPLv2 or later
 
 Hide WordPress default paths, wp-content, wp-includes, wp-admin, login URL, plugins, themes etc. Block the defaults for being still accessible. No files and data are changed on your server.
@@ -354,6 +354,13 @@ Please get in touch with us and we'll do our best to include it for a next versi
 2. Sample front html code.
 
 == Changelog ==
+
+= 1.6.3.9 =
+* Include the "Clean the REST API response" within Sample Setup. 
+
+= 1.6.3.8 =
+* New option for JSON REST module - "Clean the REST API response"
+* Relocated Feed tab to Rewrite module 
 
 = 1.6.3.7 =
 * Output the help title only if there's an help section available through the module settings

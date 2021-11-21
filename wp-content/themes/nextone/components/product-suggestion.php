@@ -1,5 +1,6 @@
 <?php
 $product_suggestions = get_field('product_suggestion');
+
 if ($product_suggestions) :
 
 ?>

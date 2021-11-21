@@ -78,6 +78,7 @@ class WPO_Cache_Rules {
 			$post_id = $commentdata['comment_post_ID'];
 
 			WPO_Page_Cache::delete_single_post_cache($post_id);
+			WPO_Page_Cache::delete_comments_feed();
 		}
 	}
 
@@ -89,7 +90,10 @@ class WPO_Cache_Rules {
 	public function purge_post_on_comment_status_change($comment_id) {
 		if (!empty($this->config['enable_page_caching'])) {
 			$comment = get_comment($comment_id);
-			if (is_object($comment) && !empty($comment->comment_post_ID)) WPO_Page_Cache::delete_single_post_cache($comment->comment_post_ID);
+			if (is_object($comment) && !empty($comment->comment_post_ID)) {
+				WPO_Page_Cache::delete_single_post_cache($comment->comment_post_ID);
+				WPO_Page_Cache::delete_comments_feed();
+			}
 		}
 	}
 
@@ -145,8 +149,10 @@ class WPO_Cache_Rules {
 			return;
 		} else {
 			if (apply_filters('wpo_delete_cached_homepage_on_post_update', true, $post_id)) WPO_Page_Cache::delete_homepage_cache();
+			WPO_Page_Cache::delete_feed_cache();
 			WPO_Page_Cache::delete_single_post_cache($post_id);
 			WPO_Page_Cache::delete_sitemap_cache();
+			WPO_Page_Cache::delete_post_feed_cache($post_id);
 		}
 	}
 

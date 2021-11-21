@@ -12,7 +12,30 @@
                                                 
             function get_module_settings()
                 {
+                    $this->module_settings[]                  =   array(
+                                                                    'id'            =>  'clean_json_base_route',
+                                                                    'label'         =>  __('Clean the REST API response',    'wp-hide-security-enhancer'),
+                                                                    'description'   =>  __('As default, when calling the REST API base route ( e.g. /wp-json/ ) the service outputs all available namespaces and routes.',    'wp-hide-security-enhancer'),
                                                                     
+                                                                    'help'          =>  array(
+                                                                                                        'title'                     =>  __('Help',    'wp-hide-security-enhancer') . ' - ' . __('Clean the REST API response',    'wp-hide-security-enhancer'),
+                                                                                                        'description'               =>  __("When calling the site REST API base route ( e.g. /wp-json/ or ?rest_route=/ ) the service outputs all available namespaces and routes for current site. This can be a breach for the system, as outputs important information regarding certain used theme and plugins. ",    'wp-hide-security-enhancer') .
+                                                                                                                                            "<br /><br />" . __("Recommended selection for this option is Yes, to ensure no inside data is being exposed. ",    'wp-hide-security-enhancer'),
+                                                                                                        'option_documentation_url'  =>  'https://www.wp-hide.com/documentation/rewrite-json-rest/'
+                                                                                                        ),
+                                                        
+                                                                    'input_type'    =>  'radio',
+                                                                    'options'       =>  array(
+                                                                                                'no'        =>  __('No',     'wp-hide-security-enhancer'),
+                                                                                                'yes'       =>  __('Yes',    'wp-hide-security-enhancer'),
+                                                                                                ),
+                                                                    'default_value' =>  'no',
+                                                                    
+                                                                    'sanitize_type' =>  array('sanitize_title', 'strtolower'),
+                                                                    'processing_order'  =>  58
+                                                                    
+                                                                    );
+                                                                                                                    
                     $this->module_settings[]                  =   array(
                                                                     'id'            =>  'disable_json_rest_v1',
                                                                     'label'         =>  __('Disable JSON REST V1 service',    'wp-hide-security-enhancer'),
@@ -193,7 +216,29 @@
                     return $this->module_settings;   
                 }
                 
+            function _init_clean_json_base_route( $saved_field_data )
+                {
+                    if(empty($saved_field_data) ||  $saved_field_data   ==  'no')
+                        return FALSE;
+
+                    add_filter( 'rest_request_after_callbacks', array ( $this, 'rest_request_after_callbacks'), 999, 3 );
+                    
+                }
                 
+            function rest_request_after_callbacks( $response, $handler, $request )
+                {
+                    
+                    if ( $request->get_route() !=  '/' )
+                        return $response;
+                        
+                    if (  isset ( $response->data )    &&  isset ( $response->data['namespaces'] )   &&  is_array ( $response->data['namespaces'] ) )
+                        {
+                            $response->data['namespaces']   =   array();
+                            $response->data['routes']       =   array();
+                        }
+                    
+                    return $response;   
+                }    
                 
             function _init_disable_json_rest_v1($saved_field_data)
                 {

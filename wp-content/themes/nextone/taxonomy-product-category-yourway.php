@@ -5,9 +5,9 @@ $term_description = term_description($term, "product-category");
 $cate_i = 0;
 ?>
 
-<section id="yourway__banner" class="yourway__banner lazy goteffect" data-bg="<?php echo get_bloginfo('template_directory').'/images/yourway/background1.webp'; ?>">
+<section id="yourway__banner" class="yourway__banner lazy goteffect" data-bg="<?php echo get_bloginfo('template_directory') . '/images/yourway/background1.webp'; ?>">
   <div class="container">
-    <h1 title="yourway" class="yourway__banner__title goteffect"><img src="<?php echo get_bloginfo('template_directory').'/images/yourway/nomainLogo.png'; ?>" data-src="<?php echo get_bloginfo('template_directory').'/images/yourway/mainLogo.png'; ?>" title="Yourway" alt="Yourway" class="lazy" /></h1>
+    <h1 title="yourway" class="yourway__banner__title goteffect"><img src="<?php echo get_bloginfo('template_directory') . '/images/yourway/nomainLogo.png'; ?>" data-src="<?php echo get_bloginfo('template_directory') . '/images/yourway/mainLogo.png'; ?>" title="Yourway" alt="Yourway" class="lazy" /></h1>
     <?php
     $yourway_intro_text = get_field('yourway_intro_text', $term);
     if ($yourway_intro_text) :
@@ -20,15 +20,15 @@ $cate_i = 0;
     ?>
     <ul class="owl-carousel owl-theme yourway__banner__slides">
       <a href="#yourway_cate_1" class="yourway__banner__item yourway__banner__item01 goteffect">
-        <img src="<?php echo get_bloginfo('template_directory').'/images/yourway/nogirl1.png'; ?>" data-src="<?php echo get_bloginfo('template_directory').'/images/yourway/girl1.webp'; ?>" class="lazy" width="300" height="300" title="Yourway Professional" alt="Yourway Professional" />
+        <img src="<?php echo get_bloginfo('template_directory') . '/images/yourway/nogirl1.png'; ?>" data-src="<?php echo get_bloginfo('template_directory') . '/images/yourway/girl1.webp'; ?>" class="lazy" width="300" height="300" title="Yourway Professional" alt="Yourway Professional" />
         <strong class="yourway__banner__slides--tit"><?php _e('uốn duỗi', 'lavo') ?></strong>
       </a>
       <a href="#yourway_cate_2" class="yourway__banner__item yourway__banner__item02 goteffect">
-        <img src="<?php echo get_bloginfo('template_directory').'/images/yourway/nogirl1.png'; ?>" data-src="<?php echo get_bloginfo('template_directory').'/images/yourway/girl2.webp'; ?>" class="lazy" width="300" height="300" title="Yourway Professional" alt="Yourway Professional" />
+        <img src="<?php echo get_bloginfo('template_directory') . '/images/yourway/nogirl1.png'; ?>" data-src="<?php echo get_bloginfo('template_directory') . '/images/yourway/girl2.webp'; ?>" class="lazy" width="300" height="300" title="Yourway Professional" alt="Yourway Professional" />
         <strong class="yourway__banner__slides--tit"><?php _e('nhuộm và tẩy tóc', 'lavo') ?></strong>
       </a>
       <a href="#yourway_cate_3" class="yourway__banner__item yourway__banner__item03 goteffect">
-        <img src="<?php echo get_bloginfo('template_directory').'/images/yourway/nogirl1.png'; ?>" data-src="<?php echo get_bloginfo('template_directory').'/images/yourway/girl3.webp'; ?>" class="lazy" width="300" height="300" title="Yourway Professional" alt="Yourway Professional" />
+        <img src="<?php echo get_bloginfo('template_directory') . '/images/yourway/nogirl1.png'; ?>" data-src="<?php echo get_bloginfo('template_directory') . '/images/yourway/girl3.webp'; ?>" class="lazy" width="300" height="300" title="Yourway Professional" alt="Yourway Professional" />
         <strong class="yourway__banner__slides--tit"><?php _e('hấp dầu', 'lavo') ?></strong>
       </a>
     </ul>
@@ -91,11 +91,11 @@ if ($yourway_curling_title && $yourway_curling_description) :
                   <a href="<?php the_permalink(); ?>" class="product__button__detail"><?php _e('chi tiết', 'lavo') ?></a>
                 </span>
               </div>
-            <?php
+            </div>
+          <?php
           endforeach;
           wp_reset_postdata();
-            ?>
-            </div>
+          ?>
         </div>
       </div>
     </section>
@@ -129,7 +129,7 @@ if ($yourway_dye_title && $yourway_dye_description) :
   if ($postslist) :
     $cate_i++;
 ?>
-    <section id="yourway_cate_<?php echo $cate_i ?>" class="yourway-highlight type02 lazy goteffect" data-bg="<?php echo get_bloginfo('template_directory').'/images/yourway/background2.webp'; ?>">
+    <section id="yourway_cate_<?php echo $cate_i ?>" class="yourway-highlight type02 lazy goteffect" data-bg="<?php echo get_bloginfo('template_directory') . '/images/yourway/background2.webp'; ?>">
       <div class="container yourway-highlight__container">
         <h2 class="yourway-highlight__title goteffect"><?php echo $yourway_dye_title ?></h2>
         <div class="yourway-highlight__desc goteffect">

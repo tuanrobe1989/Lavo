@@ -46,6 +46,8 @@
   }
   &__common {
     padding: 100px 0;
+    background-repeat: no-repeat;
+    background-size: cover;
     @include breakpoint-down(md) {
       background-position: bottom center;
     }
